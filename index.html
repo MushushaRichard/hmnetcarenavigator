@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetCare Navigator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background-color: #666;
+            color: white;
+            padding: 0.5em;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            background-color: #ddd;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        #result, #diagnosticsResult, #recommendations, #connectivityMap, #wiFiAnalyzer, #wiFiAnalyzerResult, #feedbackForm, #historyList, #tools, #userAccount, #newsList, .forum-post {
+            margin-top: 20px;
+        }
+
+        #connectivityMap img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #666;
+            color: white;
+            border: none;
+        }
+
+        #newsList {
+            column-count: 2;
+        }
+
+        .forum-post {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>NetCare Navigator</h1>
+    </header>
+
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#speedTest">Speed Test</a></li>
+            <li><a href="#networkDiagnostics">Diagnostics</a></li>
+            <li><a href="#recommendations">Tips</a></li>
+            <li><a href="#connectivityMap">Connectivity Map</a></li>
+            <li><a href="#wiFiAnalyzer">Wi-Fi Analyzer</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#internetServices">Internet Services</a></li>
+            <li><a href="#historyList">History</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#userAccount">Account</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#communityForum">Forum</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home">
+            <h2>Welcome to NetCare Navigator!</h2>
+            <p>This web application helps you optimize your internet connectivity.</p>
+            <p>Current date: <span id="currentDate"></span></p>
+        </section>
+
+        <section id="speedTest">
+            <h2>Speed Test</h2>
+            <button onclick="runSpeedTest()">Run Speed Test</button>
+            <div id="result"></div>
+        </section>
+
+        <section id="networkDiagnostics">
+            <h2>Network Diagnostics</h2>
+            <button onclick="runDiagnostics()">Run Diagnostics</button>
+            <div id="diagnosticsResult"></div>
+        </section>
+
+        <section id="recommendations">
+            <h2>Tips and Recommendations</h2>
+            <p>Follow these tips to optimize your internet connectivity:</p>
+            <ul>
+                <li>Place your router in a central location.</li>
+                <li>Use a wired connection for better stability.</li>
+                <li>Update router firmware regularly.</li>
+                <li>Choose optimal Wi-Fi channels to avoid interference.</li>
+            </ul>
+        </section>
+
+        <section id="connectivityMap">
+            <h2>Connectivity Map</h2>
+            <p>Explore the connectivity map to find optimal spots:</p>
+            <img src="connectivity_map.png" alt="Connectivity Map">
+        </section>
+
+        <section id="wiFiAnalyzer">
+            <h2>Wi-Fi Analyzer</h2>
+            <button onclick="runWiFiAnalyzer()">Run Wi-Fi Analyzer</button>
+            <div id="wiFiAnalyzerResult"></div>
+        </section>
+
+        <section id="about">
+            <h2>About NetCare Navigator</h2>
+            <p>NetCare Navigator is a powerful tool designed to enhance your internet experience.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Feel free to contact us with any questions or feedback.</p>
+        </section>
+
+        <section id="internetServices">
+            <h2>Internet Services</h2>
+            <p>Explore our internet services and discover new possibilities.</p>
+        </section>
+
+        <section id="historyList">
+            <h2>History</h2>
+            <ul>
+                <li>Speed Test - Result: 50 Mbps</li>
+                <li>Diagnostics - No issues found</li>
+                <!-- Add more history items as needed -->
+            </ul>
+        </section>
+
+        <section id="tools">
+            <h2>Tools</h2>
+            <button onclick="runTool1()">Tool 1</button>
+            <div id="tool1Result"></div>
+            <button onclick="runTool2()">Tool 2</button>
+            <div id="tool2Result"></div>
+            <!-- Add more tools as needed -->
+        </section>
+
+        <section id="userAccount">
+            <h2>User Account</h2>
+            <button onclick="logout()">Log Out</button>
+            <!-- Add more user account features as needed -->
+        </section>
+
+        <section id="news">
+            <h2>Latest News</h2>
+            <div id="newsList"></div>
+        </section>
+
+        <section id="troubleshooting">
+            <h2>Troubleshooting</h2>
+            <p>If you are experiencing issues, check the following:</p>
+            <ul>
+                <li>Ensure your device is connected to the internet.</li>
+                <li>Restart your router and modem.</li>
+                <li>Check for service outages in your area.</li>
+                <li>Update your device's network drivers.</li>
+            </ul>
+        </section>
+
+        <section id="communityForum">
+            <h2>Community Forum</h2>
+            <div class="forum-post">
+                <h3>Connection Dropouts</h3>
+                <p>Is anyone else experiencing frequent connection dropouts? I need help!</p>
+            </div>
+            <div class="forum-post">
+                <h3>Router Recommendations</h3>
+                <p>Can anyone recommend a good router for a large house with multiple devices?</p>
+            </div>
+            <!-- Add more forum posts as needed -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 NetCare Navigator. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function runSpeedTest() {
+            // Simulate a speed test (replace with actual implementation)
+            var speedResult = Math.floor(Math.random() * 100) + " Mbps";
+            document.getElementById("result").innerHTML = "Your internet speed is: " + speedResult;
+        }
+
+        function runDiagnostics() {
+            // Simulate network diagnostics (replace with actual implementation)
+            var diagnosticsResult = "Network diagnostics: No issues found.";
+            document.getElementById("diagnosticsResult").innerHTML = diagnosticsResult;
+        }
+
+        function runWiFiAnalyzer() {
+            // Simulate Wi-Fi analyzer results (replace with actual implementation)
+            var wiFiAnalyzerResult = "Optimal Wi-Fi channel: 6";
+            document.getElementById("wiFiAnalyzerResult").innerHTML = wiFiAnalyzerResult;
+        }
+
+        function runTool1() {
+            // Simulate tool 1 (replace with actual implementation)
+            var tool1Result = "Tool 1 result: Success";
+            document.getElementById("tool1Result").innerHTML = tool1Result;
+        }
+
+        function runTool2() {
+            // Simulate tool 2 (replace with actual implementation)
+            var tool2Result = "Tool 2 result: In progress";
+            document.getElementById("tool2Result").innerHTML = tool2Result;
+        }
+
+        function logout() {
+            alert("Logged out successfully!");
+            // Add additional logout logic as needed
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Update current date
+        document.getElementById("currentDate").innerText = new Date().toLocaleDateString();
+
+        // Fetch and display news dynamically
+        fetchNews();
+
+        function fetchNews() {
+            // Simulate fetching news (replace with actual implementation)
+            var newsData = [
+                { title: "New Broadband Speed Records", content: "Researchers achieve record-breaking broadband speeds in recent tests." },
+                { title: "Tips for Remote Work Connectivity", content: "Ensure a stable internet connection while working from home with these tips." },
+                { title: "Upcoming Maintenance", content: "Scheduled maintenance on our network infrastructure this weekend. Expect brief outages." }
+                // Add more news items as needed
+            ];
+
+            var newsList = document.getElementById("newsList");
+
+            newsData.forEach(function (newsItem) {
+                var newsItemElement = document.createElement("div");
+                newsItemElement.innerHTML = "<strong>" + newsItem.title + "</strong><br>" + newsItem.content;
+                newsList.appendChild(newsItemElement);
+            });
+        }
+    </script>
+</body>
+</html>
